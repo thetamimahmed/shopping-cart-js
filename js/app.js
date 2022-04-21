@@ -13,6 +13,28 @@ function countQuantity(countId, isAdd, priceId, price){
     const productPriceElement = document.getElementById(priceId);
     const productPrice = countFieldValue * price;
     productPriceElement.innerText  = productPrice;
+    calculatePrice()
+}
+function getCountValue(product){
+    const countInput = document.getElementById('count-' + product);
+    const countValue = parseInt(countInput.value);
+    return countValue
+}
+
+function calculatePrice(){
+    const s22Quantity = getCountValue('s22');
+    const watchQuantity = getCountValue('watch');
+    const g5Quantity = getCountValue('g5');
+    const s22Price = s22Quantity * 1132;
+    const WatchPrice = watchQuantity * 732;
+    const g5Price = g5Quantity * 562;
+    // const subTotalElement = document.getElementById('subtotal');
+    const subTotal = s22Price + WatchPrice + g5Price;
+    const tax = subTotal / 10;
+    const totalPrice = subTotal + tax;
+    document.getElementById('subtotal').innerText = subTotal;
+    document.getElementById('tax').innerText = tax;
+    document.getElementById('total').innerText = totalPrice;
 }
 
 //samsung s22 handle event listener
